@@ -1,8 +1,6 @@
 import { graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import useWindow from "../../utils/window";
 import Gallery from "../components/gallery";
 import Select from "../components/select";
 import SVGS from "../components/svgs";
@@ -10,8 +8,9 @@ import Videos from "../components/videos";
 import "../style.scss";
 
 function capitalize(string) {
-  return string.at(0).toUpperCase() + string.slice(1);
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
 const options = [
   // { label: "wszystko", value: "all" },
   { value: "logo", label: "wektory" },
@@ -24,7 +23,7 @@ const titles = options.map((o) => capitalize(o.label));
 function Home({ data: { images, svgs, videos } }) {
   const [category, setCategory] = useState(null);
 
-	useLayoutEffect(() => {
+  useLayoutEffect(() => {
     console.log("effect");
     window.scrollTo(0, 0);
   }, [category]);
