@@ -1,6 +1,6 @@
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import useWindow from "../../utils/window";
 import Gallery from "../components/gallery";
@@ -20,15 +20,18 @@ const options = [
 ];
 
 const titles = options.map((o) => capitalize(o.label));
-function Home({ data: { images, svgs, videos } }) {
-  console.log(videos.nodes);
 
+function Home({ data: { images, svgs, videos } }) {
   const [category, setCategory] = useState(null);
 
-  function filterCategory(option) {
-    return option === options[0] || option == null;
+	useLayoutEffect(() => {
+    console.log("effect");
+    window.scrollTo(0, 0);
+  }, [category]);
+
+  function filterCategory(optionIndex) {
+    return options[optionIndex] === category || category === null;
   }
-  console.log(titles[2]);
   return (
     <div className='content'>
       <Helmet>
@@ -49,7 +52,7 @@ function Home({ data: { images, svgs, videos } }) {
         </ul>
       </div>
       <Select
-			className='appear one'
+        className='appear one'
         noChoiceText='wszystko'
         options={options}
         label={"Pokaż mi..."}
@@ -58,10 +61,14 @@ function Home({ data: { images, svgs, videos } }) {
           sel === category ? setCategory(null) : setCategory(sel)
         }
       />
-      <main className="appear two">
-        <SVGS svgs={svgs.nodes} title={titles[0]} />
-        <Gallery images={images.nodes} title={titles[1]} />
-        <Videos videos={videos.nodes} title={titles[2]} />
+      <main className='appear two'>
+        {filterCategory(0) && <SVGS svgs={svgs.nodes} title={titles[0]} />}
+        {filterCategory(1) && (
+          <Gallery images={images.nodes} title={titles[1]} />
+        )}
+        {filterCategory(2) && (
+          <Videos videos={videos.nodes} title={titles[2]} />
+        )}
       </main>
     </div>
   );
@@ -75,7 +82,7 @@ export const query = graphql`
             placeholder: BLURRED
             forceBlurhash: true
             layout: CONSTRAINED
-						width: 1920
+            width: 1920
           )
           alt
         }
