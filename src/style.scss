@@ -233,10 +233,10 @@ header,
 .video + .video {
   margin-top: 3 * $page-padding;
 }
-.dropdown-label{
-	background-color: transparentize($background, .1);
-	padding-block: 10px;
-	padding-left: 30px;
+.dropdown-label {
+  background-color: transparentize($background, 0.1);
+  padding-block: 10px;
+  padding-left: 30px;
 }
 @media screen and (min-width: 300px) {
   .dropdown-container {
@@ -297,69 +297,29 @@ header,
     transform: scale(1);
   }
 }
-$delay-root: 1s;
-$delay-block: 0.3s;
-$delay-step: 0.2s;
-@mixin stagger($i) {
-  --delay: calc(#{$delay-root + $i * $delay-step} + var(--delay-block));
-}
-@mixin stagger-block($i) {
-  --delay-block: #{$delay-root + $delay-block * $i};
-}
-body {
-  --delay-block: #{$delay-root};
-  @include stagger(1);
-}
-.appear,
-.appear-container > * {
-  animation: 0.3s var(--delay) appear both ease-in-out;
-}
-.one,
-.appear {
-  @include stagger(1);
-}
-.two {
-  @include stagger(2);
-}
-.three {
-  @include stagger(3);
-}
-.four {
-  @include stagger(4);
-}
-.one-block {
-  @include stagger-block(1);
-}
-.two-block {
-  @include stagger-block(2);
-}
-.three-block {
-  @include stagger-block(3);
-}
-.four-block {
-  @include stagger-block(4);
-}
-.five-block {
-  @include stagger-block(5);
-}
-header {
-  animation: 0.5s both;
-  animation-name: head-anim, appear;
-  animation-delay: $delay-root, 0s;
-  transform: scale(var(--scale));
-  transform-origin: 0 0;
-}
-@media (hover: hover) {
-  .svg-wrapper,
-  .gallery-image {
-    transition: opacity 0.2s;
-    opacity: 0.5;
+@media (prefers-reduced-motion: no-preference) {
+  header {
+    animation: 0.5s both;
+    animation-name: head-anim, appear;
+    animation-delay: 1s, 0s;
+    transform: scale(var(--scale));
+    transform-origin: 0 0;
+  }
+  main, .dropdown-container, .technologies {
+    animation: 0.5s 1s both appear ease-in-out;
+  }
+  @media (hover: hover) {
+    .svg-wrapper,
+    .gallery-image {
+      transition: opacity 0.2s;
+      opacity: 0.5;
 
-    &:hover {
+      &:hover {
+        opacity: 1;
+      }
+    }
+    .fullscreen :where(.svg-wrapper, .gallery-image) {
       opacity: 1;
     }
-  }
-  .fullscreen :where(.svg-wrapper, .gallery-image) {
-    opacity: 1;
   }
 }

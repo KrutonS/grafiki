@@ -41,7 +41,7 @@ function Home({ data: { images, svgs, videos } }) {
         <h2 className='accent-text'>Grafiki</h2>
         <h3>Marcin Smarzewski</h3>
       </header>
-      <div className='technologies appear two'>
+      <div className='technologies '>
         <h4 className='accent-text'>Najczęstsze narzędzia</h4>
         <ul className='low-opacity'>
           <li>Photoshop</li>
@@ -51,7 +51,6 @@ function Home({ data: { images, svgs, videos } }) {
         </ul>
       </div>
       <Select
-        className='appear one'
         noChoiceText='wszystko'
         options={options}
         label={"Pokaż mi..."}
@@ -60,7 +59,7 @@ function Home({ data: { images, svgs, videos } }) {
           sel === category ? setCategory(null) : setCategory(sel)
         }
       />
-      <main className='appear two'>
+      <main >
         {filterCategory(0) && <SVGS svgs={svgs.nodes} title={titles[0]} />}
         {filterCategory(1) && (
           <Gallery images={images.nodes} title={titles[1]} />
