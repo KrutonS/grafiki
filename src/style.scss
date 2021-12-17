@@ -301,12 +301,12 @@ header,
   header {
     animation: 0.5s both;
     animation-name: head-anim, appear;
-    animation-delay: 1s, 0s;
+    animation-delay: 0s;
     transform: scale(var(--scale));
     transform-origin: 0 0;
   }
   main, .dropdown-container, .technologies {
-    animation: 0.5s 1s both appear ease-in-out;
+    animation: 0.5s both appear ease-in-out;
   }
   @media (hover: hover) {
     .svg-wrapper,
