@@ -7,9 +7,10 @@ function Gallery({ images, title }) {
   const { setFullscreenElement, fullscreenNode } = useFullscreen();
   const imagesJSX = images.map(
     ({ picture: { gatsbyImageData, alt } = {} }, i) => (
-      <div
+      <span
         className='wrapper'
         onClick={() => setFullscreenElement(imagesJSX[i])}
+        key={alt}
       >
         <GatsbyImage
           image={gatsbyImageData}
@@ -17,12 +18,10 @@ function Gallery({ images, title }) {
           className='gallery-image'
           width='100%'
           height='100%'
-          key={alt}
         />
-      </div>
+      </span>
     )
   );
-  console.log(fullscreenNode);
   return (
     <>
       <section className='images'>

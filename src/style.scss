@@ -196,7 +196,7 @@ svg {
     position: relative;
     z-index: 100;
   }
-  & .gatsby-image-wrapper {
+  & .gatsby-image-wrapper, & .wrapper {
     &,
     & * {
       height: 100%;
@@ -204,6 +204,9 @@ svg {
       object-fit: contain !important;
     }
   }
+}
+.wrapper{
+	width: fit-content;
 }
 // .fullscreen-bg {
 //   position: absolute;
