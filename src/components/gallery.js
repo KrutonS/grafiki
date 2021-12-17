@@ -14,9 +14,11 @@ function Gallery({ images, title }) {
 				className="gallery-image"
 				width="100%"
 				height="100%"
+				key={alt}
       />
     )
 		);
+		console.log(fullscreenNode);
   return (
     <>
       <section className='images'>
