@@ -1,3 +1,4 @@
+require('dotenv').config();
 module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
@@ -7,7 +8,7 @@ module.exports = {
     {
       resolve: "gatsby-source-datocms",
       options: {
-        apiToken: "29abf5bbe8a387643dddf3ac4eb6b0",
+        apiToken: process.env.DATOCMS_TOKEN,
       },
     },
     "gatsby-plugin-sass",
