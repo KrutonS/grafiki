@@ -24,7 +24,6 @@ function Home({ data: { images, svgs, videos } }) {
   const [category, setCategory] = useState(null);
 
   useLayoutEffect(() => {
-    console.log("effect");
     window.scrollTo(0, 0);
   }, [category]);
 

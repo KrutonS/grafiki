@@ -4,10 +4,10 @@ import HTitle from "./title";
 import useFullscreen from "../../utils/fullscreen";
 
 function Gallery({ images, title }) {
-  const { setFullscreenElement, fullscreenNode } = useFullscreen();
+	const { setFullscreenElement, fullscreenNode } = useFullscreen();
   const imagesJSX = images.map(
-    ({ picture: { gatsbyImageData, alt } = {} }, i) => (
-      <GatsbyImage
+		({ picture: { gatsbyImageData, alt } = {} }, i) => (
+			<GatsbyImage
         image={gatsbyImageData}
         onClick={() => setFullscreenElement(imagesJSX[i])}
         alt={alt}
@@ -16,7 +16,7 @@ function Gallery({ images, title }) {
 				height="100%"
       />
     )
-  );
+		);
   return (
     <>
       <section className='images'>
