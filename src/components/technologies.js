@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-function Technologies() {
+const Technologies = memo(() => {
   return (
     <div className='technologies '>
       <h4 className='accent-text'>Najczęstsze narzędzia</h4>
@@ -20,6 +20,6 @@ function Technologies() {
       </ul>
     </div>
   );
-}
+});
 
 export default Technologies;

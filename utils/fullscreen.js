@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
+import accessibleClick from "./accessibleClick";
 
 export default function useFullscreen() {
+	const fullScreenHTML = useRef(null);
+	
+	useLayoutEffect(()=>console.log(fullScreenHTML));
   const [active, setActive] = useState(null);
   const disable = () => {
     setActive(null);
   };
   const fullscreenNode = (
-    <div className='fullscreen' onClick={disable}>
+    <div
+      className='fullscreen'
+      {...accessibleClick(disable)}
+			ref={fullScreenHTML}
+    >
       {/* <div className='fullscreen-bg' onClick={disable} /> */}
       {active}
     </div>

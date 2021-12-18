@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import useFullscreen from "../../utils/fullscreen";
+import React from "react";
+import accessibleClick from "../../utils/accessibleClick";
 import HTitle from "./title";
 
-function SVGS({ svgs, title, setFullscreenElement }) {
+function Svgs({ svgs, title, setFullscreenElement }) {
   const svgJSX = svgs.map((svg, i) => (
     <div
       className='svg-wrapper'
       title={svg.alt}
       dangerouslySetInnerHTML={{ __html: svg.svg }}
       key={svg.alt}
-      onClick={() => setFullscreenElement(svgJSX[i])}
+      {...accessibleClick(() => setFullscreenElement(svgJSX[i]))}
     />
   ));
   return (
@@ -20,4 +20,4 @@ function SVGS({ svgs, title, setFullscreenElement }) {
   );
 }
 
-export default SVGS;
+export default Svgs;

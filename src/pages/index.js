@@ -1,5 +1,5 @@
 import { graphql } from "gatsby";
-import React, {  } from "react";
+import React from "react";
 import useFullscreen from "../../utils/fullscreen";
 import Content from "../components/content";
 import "../style.scss";
@@ -9,8 +9,6 @@ import "../style.scss";
 
 function Home({ data }) {
   const { fullscreenNode, setFullscreenElement } = useFullscreen();
-
-
   return (
     <div className='content'>
       <Content

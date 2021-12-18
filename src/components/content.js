@@ -1,5 +1,6 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { memo, useLayoutEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import Copyright from "./copyright";
 import Header from "./header";
 import Main from "./main";
 import Select from "./select";
@@ -10,7 +11,7 @@ const options = [
   { value: "3d", label: "obrazy 3D" },
   { value: "video3d", label: "video 3D" },
 ];
-function Content({ setFullscreenElement, data }) {
+const Content = memo(({ setFullscreenElement, data }) => {
   const [category, setCategory] = useState(null);
 
   useLayoutEffect(() => {
@@ -18,7 +19,7 @@ function Content({ setFullscreenElement, data }) {
   }, [category]);
   return (
     <>
-      <Helmet>
+      <Helmet htmlAttributes={{lang:'pl'}}>
         <title>Portfolio</title>
       </Helmet>
       <Header />
@@ -35,12 +36,12 @@ function Content({ setFullscreenElement, data }) {
       <Main
         setFullscreenElement={setFullscreenElement}
         activeCategory={category}
-				options={options}
-				data={data}
+        options={options}
+        data={data}
       />
-      <small>Copyright 2021 Marcin Smarzewski</small>
+      <Copyright />
     </>
   );
-}
+});
 
 export default Content;

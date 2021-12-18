@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-function Header() {
+const Header = memo(() => {
   return (
     <header>
       <h1>Portfolio</h1>
@@ -8,6 +8,6 @@ function Header() {
       <h3>Marcin Smarzewski</h3>
     </header>
   );
-}
+});
 
 export default Header;
