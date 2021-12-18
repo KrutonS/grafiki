@@ -1,85 +1,23 @@
 import { graphql } from "gatsby";
-import React, { useLayoutEffect, useState } from "react";
-import { Helmet } from "react-helmet";
-import Gallery from "../components/gallery";
-import Select from "../components/select";
-import SVGS from "../components/svgs";
-import Videos from "../components/videos";
-import "../style.scss";
+import React, {  } from "react";
 import useFullscreen from "../../utils/fullscreen";
+import Content from "../components/content";
+import "../style.scss";
 
-function capitalize(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
 
-const options = [
-  // { label: "wszystko", value: "all" },
-  { value: "logo", label: "wektory" },
-  { value: "3d", label: "obrazy 3D" },
-  { value: "video3d", label: "video 3D" },
-];
 
-const titles = options.map((o) => capitalize(o.label));
-function Home({ data: { images, svgs, videos } }) {
-  const [category, setCategory] = useState(null);
+
+function Home({ data }) {
   const { fullscreenNode, setFullscreenElement } = useFullscreen();
 
-  useLayoutEffect(() => {
-    window.scrollTo({top:0, behavior:'smooth'});
-  }, [category]);
 
-  function filterCategory(optionIndex) {
-    return options[optionIndex] === category || category === null;
-  }
   return (
     <div className='content'>
-      <Helmet>
-        <title>Portfolio</title>
-      </Helmet>
-      <header>
-        <h1>Portfolio</h1>
-        <h2 className='accent-text'>Grafiki</h2>
-        <h3>Marcin Smarzewski</h3>
-      </header>
-      <div className='technologies '>
-        <h4 className='accent-text'>Najczęstsze narzędzia</h4>
-        <ul className='low-opacity'>
-          <li><small>Photoshop</small></li>
-          <li><small>Blender</small></li>
-          <li><small>Figma</small></li>
-          <li><small>InkScape</small></li>
-        </ul>
-      </div>
-      <Select
-        noChoiceText='wszystko'
-        options={options}
-        label={"Pokaż mi..."}
-        selected={category}
-        setSelected={(sel) =>
-          sel === category ? setCategory(null) : setCategory(sel)
-        }
+      <Content
+        setFullscreenElement={setFullscreenElement}
+				data={data}
       />
-      <main>
-        {filterCategory(0) && (
-          <SVGS
-            svgs={svgs.nodes}
-            title={titles[0]}
-            setFullscreenElement={setFullscreenElement}
-          />
-        )}
-        {filterCategory(1) && (
-          <Gallery
-            images={images.nodes}
-            title={titles[1]}
-            setFullscreenElement={setFullscreenElement}
-          />
-        )}
-        {filterCategory(2) && (
-          <Videos videos={videos.nodes} title={titles[2]} />
-        )}
-      </main>
       {fullscreenNode}
-			<small>Copyright 2021 Marcin Smarzewski</small>
     </div>
   );
 }
@@ -108,7 +46,7 @@ export const query = graphql`
     videos: allDatoCmsVideo {
       nodes {
         yt {
-          videoId:providerUid
+          videoId: providerUid
           title
         }
       }
