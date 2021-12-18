@@ -7,7 +7,7 @@ function Videos({ videos, title }) {
     <section className='videos'>
       <HTitle>{title}</HTitle>
       {videos.map(({ yt: { title, videoId } }) => (
-				 <YoutubeEmbed videoId={videoId} title={title}/>
+        <YoutubeEmbed key={videoId} videoId={videoId} title={title} />
       ))}
     </section>
   );

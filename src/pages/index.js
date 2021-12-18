@@ -44,10 +44,10 @@ function Home({ data: { images, svgs, videos } }) {
       <div className='technologies '>
         <h4 className='accent-text'>Najczęstsze narzędzia</h4>
         <ul className='low-opacity'>
-          <li>Photoshop</li>
-          <li>Blender</li>
-          <li>Figma</li>
-          <li>InkScape</li>
+          <li><small>Photoshop</small></li>
+          <li><small>Blender</small></li>
+          <li><small>Figma</small></li>
+          <li><small>InkScape</small></li>
         </ul>
       </div>
       <Select
@@ -79,6 +79,7 @@ function Home({ data: { images, svgs, videos } }) {
         )}
       </main>
       {fullscreenNode}
+			<small>Copyright 2021 Marcin Smarzewski</small>
     </div>
   );
 }
