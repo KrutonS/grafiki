@@ -65,7 +65,7 @@ small {
   color: $primary;
 }
 .big-text {
-  margin-bottom: 2rem;
+  margin-bottom: .35em;
   line-height: 0.8em;
   font-size: max(10vw);
 }
@@ -208,6 +208,7 @@ header,
 }
 .gallery-image {
   @extend %pointer;
+  border-radius: 10px;
 }
 button {
   border: none;
@@ -283,18 +284,18 @@ button {
 }
 .yt-spinner {
   margin: auto;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	&>svg{
-		width: 80px;
-	}
-	& path{
-		stroke: $secondary;
-	}
-	& circle{
-		fill: lighten($secondary, 15%);
-	}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & > svg {
+    width: 80px;
+  }
+  & path {
+    stroke: $secondary;
+  }
+  & circle {
+    fill: lighten($secondary, 15%);
+  }
   // width: 5vw;
   // height: 5vw;
 }
