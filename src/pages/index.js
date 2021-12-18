@@ -25,7 +25,7 @@ function Home({ data: { images, svgs, videos } }) {
   const { fullscreenNode, setFullscreenElement } = useFullscreen();
 
   useLayoutEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({top:0, behavior:'smooth'});
   }, [category]);
 
   function filterCategory(optionIndex) {
