@@ -14,6 +14,7 @@ function Gallery({ images, title, setFullscreenElement }) {
           image={gatsbyImageData}
           alt={alt}
           className='gallery-image'
+					loading="lazy"
           // width='100%'
           // height='100%'
         />
