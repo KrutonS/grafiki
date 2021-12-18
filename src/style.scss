@@ -144,8 +144,7 @@ small {
     z-index: -2;
   }
 }
-.dropdown-list--show,
-.dropdown-container:focus-within .dropdown-list {
+.dropdown-list--show {
   transform: none;
 }
 .dropdown-item {
