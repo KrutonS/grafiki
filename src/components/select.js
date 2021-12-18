@@ -1,5 +1,5 @@
 import cn from "classnames";
-import React, { memo, useLayoutEffect, useRef, useState } from "react";
+import React, { memo, useState } from "react";
 import accessibleClick from "../../utils/accessibleClick";
 
 const Select = memo(
@@ -7,28 +7,11 @@ const Select = memo(
     const [show, setShow] = useState(false);
     const toggle = () => setShow(!show);
     const accessibleToggle = accessibleClick(toggle);
-    const containerRef = useRef(null);
-    useLayoutEffect(() => {
-      const containerHtml = containerRef.current;
-      const onFocusOut = () => {
-        setShow(false);
-      };
-      containerHtml.addEventListener("focusout", onFocusOut);
-      return () => {
-        containerHtml.removeEventListener("focusout", onFocusOut);
-      };
-    }, []);
-    // const onBlur = (e) => {
-    // 	console.log(e);
-    //   if (show) setShow(false);
-    // };
+    const onFocus = () => {
+      if (!show) setShow(true);
+    };
     return (
-      <nav
-        onFocus={() => setShow(true)}
-        className={cn("dropdown-container", className)}
-        ref={containerRef}
-        // onBlurCapture={onBlur}
-      >
+      <nav onFocus={onFocus} className={cn("dropdown-container", className)}>
         <span className='dropdown-label' {...accessibleToggle}>
           {label}
         </span>
