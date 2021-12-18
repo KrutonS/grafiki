@@ -6,6 +6,7 @@ import Select from "../components/select";
 import SVGS from "../components/svgs";
 import Videos from "../components/videos";
 import "../style.scss";
+import useFullscreen from "../../utils/fullscreen";
 
 function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -19,9 +20,9 @@ const options = [
 ];
 
 const titles = options.map((o) => capitalize(o.label));
-
 function Home({ data: { images, svgs, videos } }) {
   const [category, setCategory] = useState(null);
+  const { fullscreenNode, setFullscreenElement } = useFullscreen();
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -58,15 +59,26 @@ function Home({ data: { images, svgs, videos } }) {
           sel === category ? setCategory(null) : setCategory(sel)
         }
       />
-      <main >
-        {filterCategory(0) && <SVGS svgs={svgs.nodes} title={titles[0]} />}
+      <main>
+        {filterCategory(0) && (
+          <SVGS
+            svgs={svgs.nodes}
+            title={titles[0]}
+            setFullscreenElement={setFullscreenElement}
+          />
+        )}
         {filterCategory(1) && (
-          <Gallery images={images.nodes} title={titles[1]} />
+          <Gallery
+            images={images.nodes}
+            title={titles[1]}
+            setFullscreenElement={setFullscreenElement}
+          />
         )}
         {filterCategory(2) && (
           <Videos videos={videos.nodes} title={titles[2]} />
         )}
       </main>
+      {fullscreenNode}
     </div>
   );
 }
@@ -95,7 +107,7 @@ export const query = graphql`
     videos: allDatoCmsVideo {
       nodes {
         yt {
-          url
+          videoId:providerUid
           title
         }
       }

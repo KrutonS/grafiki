@@ -190,13 +190,14 @@ svg {
   @extend %flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 1000;
   background-color: transparentize(black, 0.5);
   & > *:last-child {
     position: relative;
     z-index: 100;
   }
-  & .gatsby-image-wrapper, & .wrapper {
+  & .gatsby-image-wrapper,
+  & .wrapper {
     &,
     & * {
       height: 100%;
@@ -204,9 +205,6 @@ svg {
       object-fit: contain !important;
     }
   }
-}
-.wrapper{
-	width: fit-content;
 }
 // .fullscreen-bg {
 //   position: absolute;
@@ -230,6 +228,13 @@ header,
   // width: 100%;
   // height: 100%;
 }
+.wrapper {
+	border: none;
+	background: none;
+}
+.gatsby-image-wrapper{
+	height: 100%;
+}
 * + section {
   margin-top: 10 * $page-padding;
 }
@@ -241,6 +246,21 @@ header,
   padding-block: 10px;
   padding-left: 30px;
 }
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
 @media screen and (min-width: 300px) {
   .dropdown-container {
     right: $page-padding;
@@ -308,7 +328,9 @@ header,
     transform: scale(var(--scale));
     transform-origin: 0 0;
   }
-  main, .dropdown-container, .technologies {
+  main,
+  .dropdown-container,
+  .technologies {
     animation: 0.5s both appear ease-in-out;
   }
   @media (hover: hover) {

@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import useFullscreen from "../../utils/fullscreen";
 import HTitle from "./title";
 
-function SVGS({ svgs, title }) {
-  const { setFullscreenElement, fullscreenNode } = useFullscreen();
+function SVGS({ svgs, title, setFullscreenElement }) {
   const svgJSX = svgs.map((svg, i) => (
     <div
       className='svg-wrapper'
@@ -14,13 +13,10 @@ function SVGS({ svgs, title }) {
     />
   ));
   return (
-    <>
-      <section className='svgs'>
-        <HTitle>{title}</HTitle>
-        <div className='svgs-container'>{svgJSX}</div>
-      </section>
-      {fullscreenNode}
-    </>
+    <section className='svgs'>
+      <HTitle>{title}</HTitle>
+      <div className='svgs-container'>{svgJSX}</div>
+    </section>
   );
 }
 

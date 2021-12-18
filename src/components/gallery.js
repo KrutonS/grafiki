@@ -1,35 +1,30 @@
 import React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import HTitle from "./title";
-import useFullscreen from "../../utils/fullscreen";
 
-function Gallery({ images, title }) {
-  const { setFullscreenElement, fullscreenNode } = useFullscreen();
+function Gallery({ images, title, setFullscreenElement }) {
   const imagesJSX = images.map(
     ({ picture: { gatsbyImageData, alt } = {} }, i) => (
-      <span
+      <button
         className='wrapper'
-        onClick={() => setFullscreenElement(imagesJSX[i])}
+        onClick={() => setFullscreenElement(<GatsbyImage image={gatsbyImageData} alt={alt + ' fullscreen'} />)}
         key={alt}
       >
         <GatsbyImage
           image={gatsbyImageData}
           alt={alt}
           className='gallery-image'
-          width='100%'
-          height='100%'
+          // width='100%'
+          // height='100%'
         />
-      </span>
+      </button>
     )
   );
   return (
-    <>
-      <section className='images'>
-        <HTitle>{title}</HTitle>
-        <div className='gallery'>{imagesJSX}</div>
-      </section>
-      {fullscreenNode}
-    </>
+    <section className='images'>
+      <HTitle>{title}</HTitle>
+      <div className='gallery'>{imagesJSX}</div>
+    </section>
   );
 }
 
