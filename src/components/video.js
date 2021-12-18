@@ -1,15 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 const YoutubeEmbed = ({ videoId, title }) => {
-  const { ref, inView, entries } = useInView({ threshold: 0.1 });
+  const { ref, inView} = useInView({ threshold: 0.1 });
   const isShown = useRef(false);
   useEffect(() => {
-    if (inView) isShown = true;
+    if (inView) isShown.current = true;
   }, [inView]);
-  console.log({ ref, inView, entries });
   return (
-    <div className='video video-responsive'>
-      {isShown && (
+    <div className='video video-responsive' ref={ref}>
+      {isShown.current && (
         <iframe
           width='100%'
           // height="480"
