@@ -1,14 +1,15 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 const YoutubeEmbed = ({ videoId, title }) => {
-  const { ref, inView} = useInView({ threshold: 0.1 });
-  const isShown = useRef(false);
+  const { ref, inView } = useInView({ threshold: 0, rootMargin: "200px 0px" });
+  const [isShown, setIsShown] = useState(false);
   useEffect(() => {
-    if (inView) isShown.current = true;
+    if (inView && !isShown) setIsShown(true);
   }, [inView]);
+  console.log(inView);
   return (
     <div className='video video-responsive' ref={ref}>
-      {isShown.current && (
+      {isShown ? (
         <iframe
           width='100%'
           // height="480"
@@ -18,6 +19,8 @@ const YoutubeEmbed = ({ videoId, title }) => {
           allowFullScreen
           title={title}
         />
+      ) : (
+        <h4 className='accent-text'>Ładowanie...</h4>
       )}
     </div>
   );

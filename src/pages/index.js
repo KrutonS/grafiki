@@ -4,17 +4,11 @@ import useFullscreen from "../../utils/fullscreen";
 import Content from "../components/content";
 import "../style.scss";
 
-
-
-
 function Home({ data }) {
   const { fullscreenNode, setFullscreenElement } = useFullscreen();
   return (
     <div className='content'>
-      <Content
-        setFullscreenElement={setFullscreenElement}
-				data={data}
-      />
+      <Content setFullscreenElement={setFullscreenElement} data={data} />
       {fullscreenNode}
     </div>
   );

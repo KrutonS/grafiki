@@ -1,7 +1,7 @@
 // @import url("https://fonts.googleapis.com/css2?family=Bitter:wght@100;400;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap");
 $primary: #ff9e3d;
-$secondary: hsl(210, 100%, 48%);
+$secondary: #007af5;
 $background: #271f1d;
 $white: #eee;
 $page-padding: 10px;
@@ -281,7 +281,23 @@ button {
     padding-right: 1em;
   }
 }
-
+.yt-spinner {
+  margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&>svg{
+		width: 80px;
+	}
+	& path{
+		stroke: $secondary;
+	}
+	& circle{
+		fill: lighten($secondary, 15%);
+	}
+  // width: 5vw;
+  // height: 5vw;
+}
 @keyframes appear {
   from {
     opacity: 0;
