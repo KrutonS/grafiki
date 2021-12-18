@@ -1,11 +1,17 @@
 import { graphql } from "gatsby";
-import React from "react";
+import React, { useEffect } from "react";
 import useFullscreen from "../../utils/fullscreen";
 import Content from "../components/content";
 import "../style.scss";
 
 function Home({ data }) {
-  const { fullscreenNode, setFullscreenElement } = useFullscreen();
+  const { fullscreenNode, setFullscreenElement, disable } = useFullscreen();
+  useEffect(() => {
+    if (!!fullscreenNode) window.addEventListener("keydown", disable);
+    return () => {
+      window.removeEventListener("keydown", disable);
+    };
+  }, [disable]);
   return (
     <div className='content'>
       <Content setFullscreenElement={setFullscreenElement} data={data} />

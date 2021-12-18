@@ -5,8 +5,7 @@ const YoutubeEmbed = ({ videoId, title }) => {
   const [isShown, setIsShown] = useState(false);
   useEffect(() => {
     if (inView && !isShown) setIsShown(true);
-  }, [inView]);
-  console.log(inView);
+  }, [inView, isShown]);
   return (
     <div className='video video-responsive' ref={ref}>
       {isShown ? (
