@@ -1,24 +1,26 @@
-import React from "react";
-import { InView } from "react-intersection-observer";
+import React, { useEffect, useRef } from "react";
+import { useInView } from "react-intersection-observer";
 const YoutubeEmbed = ({ videoId, title }) => {
+  const { ref, inView, entries } = useInView({ threshold: 0.1 });
+  const isShown = useRef(false);
+  useEffect(() => {
+    if (inView) isShown = true;
+  }, [inView]);
+  console.log({ ref, inView, entries });
   return (
-    <InView>
-      {({ inView, ref, entry }) => (
-        <div className='video video-responsive' ref={ref}>
-          {inView && (
-            <iframe
-              width='100%'
-              // height="480"
-              src={`https://www.youtube.com/embed/${videoId}?origin=https://grafikimaster.gatsbyjs.io/&enablejsapi=1`}
-              frameBorder='0'
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-              allowFullScreen
-              title={title}
-            />
-          )}
-        </div>
+    <div className='video video-responsive'>
+      {isShown && (
+        <iframe
+          width='100%'
+          // height="480"
+          src={`https://www.youtube.com/embed/${videoId}?origin=https://grafikimaster.gatsbyjs.io/&enablejsapi=1`}
+          frameBorder='0'
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+          allowFullScreen
+          title={title}
+        />
       )}
-    </InView>
+    </div>
   );
 };
 
