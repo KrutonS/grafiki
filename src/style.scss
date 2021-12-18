@@ -49,13 +49,13 @@ h3 {
 small {
   font-weight: 400;
 }
-// .gatsby-image-wrapper,
-// .svg-wrapper,
-// .video,
-// .gallery,
-// .svgs-container {
-//   content-visibility: auto;
-// }
+.gatsby-image-wrapper,
+.svg-wrapper,
+.video,
+.gallery,
+.svgs-container {
+  content-visibility: auto;
+}
 /* <span className="dropdown-label">{label}</span>
       <div className='dropdown-header dropdown-cell'>{selected}</div>
       <ul className={cn("dropdown-list", { "dropdown-list--show": show })}>
