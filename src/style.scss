@@ -57,7 +57,10 @@ small {
 }
 %flex {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .accent-text {
   color: $secondary;
 }
@@ -65,7 +68,7 @@ small {
   color: $primary;
 }
 .big-text {
-  margin-bottom: .35em;
+  margin-bottom: 0.35em;
   line-height: 0.8em;
   font-size: max(10vw);
 }
@@ -74,7 +77,7 @@ small {
 }
 .dropdown-container {
   margin-inline: auto;
-  margin-block: 1.5em 100px;
+  margin-block: 1.5em;
   @extend %flex;
   flex-direction: column;
   @extend %fit-content;
@@ -150,10 +153,8 @@ svg {
 }
 .svg-wrapper {
   @extend %pointer;
+  @extend %flex;
   flex-basis: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-radius: 100%;
 }
 [title^="Fox"] {
@@ -164,9 +165,8 @@ svg {
 }
 .svgs-container {
   @extend %flex;
-  justify-content: center;
   gap: $page-padding;
-  align-items: stretch;
+  // align-items: stretch;
 }
 
 .fullscreen {
@@ -281,23 +281,6 @@ button {
   .dropdown-label {
     padding-right: 1em;
   }
-}
-.yt-spinner {
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  & > svg {
-    width: 80px;
-  }
-  & path {
-    stroke: $secondary;
-  }
-  & circle {
-    fill: lighten($secondary, 15%);
-  }
-  // width: 5vw;
-  // height: 5vw;
 }
 @keyframes appear {
   from {
