@@ -1,5 +1,5 @@
 
-<code align="right"><a href="https://grafikimaster.gatsbyjs.io/">View Live</code>
+<p align="right"><code><a href="https://grafikimaster.gatsbyjs.io/">View Live</code><p>
 <h1 align="center">
   Graphics Portfolio
 </h1>
