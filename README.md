@@ -1,3 +1,5 @@
+
+<code align="right"><a href="https://grafikimaster.gatsbyjs.io/">View Live</code>
 <h1 align="center">
   Graphics Portfolio
 </h1>
@@ -13,4 +15,3 @@ React + Gatsby  <br>
 DatoCMS         <br>
 JavaScript      <br>
 
-<code><a href="https://grafikimaster.gatsbyjs.io/">View Live</code>
