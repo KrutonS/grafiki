@@ -6,4 +6,4 @@
 <h1 align="center">
   Graphics Portfolio
 </h1>
-A show off of selection of some 2D and 3D graphics prepared by me
+A show off with a selection of some 2D and 3D pictures made in Blender / InkScape.
