@@ -2,7 +2,7 @@
   Graphics Portfolio
 </h1>
 <code><a href="https://grafikimaster.gatsbyjs.io/">View Live</code>
-A show off with a selection of some 2D and 3D pictures.
+  <p>A show off with a selection of some 2D and 3D pictures.</p>
 <h3>Tools used</h3>
 Blender   <br>
 Photoshop <br>
