@@ -13,9 +13,9 @@ Photoshop <br>
 InkScape  <br>
 
 <h3>Built with</h3>
-SCSS
-React + Gatsby
-DatoCMS
-JavaScript
+SCSS            <br>
+React + Gatsby  <br>
+DatoCMS         <br>
+JavaScript      <br>
 
 <code><a href="https://grafikimaster.gatsbyjs.io/">View Live</code>
