@@ -6,4 +6,8 @@
 <h1 align="center">
   Graphics Portfolio
 </h1>
-A show off with a selection of some 2D and 3D pictures made in Blender / InkScape.
+A show off with a selection of some 2D and 3D pictures.
+### Tools used
+Blender
+Photoshop
+InkScape
